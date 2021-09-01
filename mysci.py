@@ -1,7 +1,7 @@
 # Initialize data variable
-columns = {'data':0, 'time':1, 'tempout':2, 'windspeed':7}
+columns = {'data':0, 'time':1, 'tempout':2, 'windspeed':7, 'windchill':12}
  
-types ={'tempout':float, 'windspeed':float}
+types ={'tempout':float, 'windspeed':float, 'windchill':float}
 
 data = {}
 for column in columns:
@@ -43,4 +43,6 @@ windchill = []
 for temp, windspeed in zip(data['tempout'], data['windspeed']):
     windchill.append(compute_windchill(temp, windspeed))
 
-print(windchill)
+#Debug
+for wc_data, wc_comp in zip(data['windchill'], windchill):
+    print(f'{wc_data:5f} {wc_comp:5f} {wc_data - wc_comp:5f}')
